@@ -4,7 +4,7 @@ import { ReactComponent as ArrowRight } from '../../../img/svg/month-switch-righ
 import {
   CalendarBtnIcon,
   TimetableBtnIcon,
-} from '../MyEWSPAPanel/MyEWSPAPanel.styled';
+} from '../MyMeritoPanel/MyMeritoPanel.styled';
 
 export const AttendanceBox = styled.div`
   position: absolute;

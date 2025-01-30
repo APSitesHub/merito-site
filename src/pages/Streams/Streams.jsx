@@ -5,7 +5,7 @@ import { Loader } from 'components/SharedLayout/Loaders/Loader';
 import { LoaderWrapper } from 'components/SharedLayout/Loaders/Loader.styled';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
-import { LoginErrorNote } from 'pages/MyEWSPA/MyEWSPAPanel/MyEWSPAPanel.styled';
+import { LoginErrorNote } from 'pages/MyMerito/MyMeritoPanel/MyMeritoPanel.styled';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import * as yup from 'yup';
@@ -14,6 +14,7 @@ import {
   LoginLogo,
   StreamAuthTextHello,
 } from '../../components/Stream/Stream.styled';
+import logo from '../../img/svg/logoNew.png';
 import {
   AdminFormBtn,
   AdminInput,
@@ -122,10 +123,9 @@ const Streams = () => {
     const refreshToken = async () => {
       console.log('token refresher');
       try {
-        const res = await axios.post(
-          '/uniusers/refresh/lesson',
-          { mail: localStorage.getItem('mail') }
-        );
+        const res = await axios.post('/uniusers/refresh/lesson', {
+          mail: localStorage.getItem('mail'),
+        });
         setIsUserLogged(isLogged => (isLogged = true));
         const id = nanoid(8);
         if (!localStorage.getItem('userID')) {
@@ -154,7 +154,7 @@ const Streams = () => {
             validationSchema={loginSchema}
           >
             <LoginForm>
-              <LoginLogo />
+              <LoginLogo src={logo} alt="Merito logo" />
               <LoginFormText>
                 <StreamAuthTextHello>Hello!</StreamAuthTextHello>
                 Our website is not available without authorization. Please enter

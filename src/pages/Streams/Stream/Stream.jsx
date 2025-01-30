@@ -54,7 +54,7 @@ const Stream = () => {
   console.log(room);
 
   useEffect(() => {
-    document.title = `Lesson Online | EWSPA | ${location
+    document.title = `Lesson Online | Merito | ${location
       .replace('/lesson/', '')[0]
       .toUpperCase()}${location.replace('/lesson/', '').slice(1)}`;
 

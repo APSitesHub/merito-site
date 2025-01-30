@@ -25,20 +25,20 @@ import {
 
 export const Timetable = ({ user, timetable }) => {
   const [isAnimated, setIsAnimated] = useState(false);
-  const [marathonId, setMarathonId] = useState('81950');
+  const [marathonId, setMarathonId] = useState('82851');
   const [personalTimetable, setPersonalTimetable] = useState(
     timetable.find(timeline => marathonId === timeline.marathon)
   );
 
   const changeTimetable = () => {
     setIsAnimated(true);
-    setMarathonId(marathonId => (marathonId === '81951' ? '81950' : '81951'));
+    setMarathonId(marathonId => (marathonId === '82851' ? '82850' : '82851'));
     setPersonalTimetable(
       personalTimetable =>
         (personalTimetable = timetable.find(timeline =>
-          marathonId === '81951'
-            ? '81950' === timeline.marathon
-            : '81951' === timeline.marathon
+          marathonId === '82851'
+            ? '82850' === timeline.marathon
+            : '82851' === timeline.marathon
         ))
     );
     setTimeout(() => {
@@ -47,9 +47,9 @@ export const Timetable = ({ user, timetable }) => {
   };
 
   const getLink = () => {
-    const baseStreamUrl = 'https://ewspa.ap.education/lesson/';
+    const baseStreamUrl = 'https://merito.ap.education/lesson/';
 
-    return marathonId === '81950'
+    return marathonId === '82851'
       ? baseStreamUrl + 'logistics'
       : baseStreamUrl + 'prep';
   };
@@ -86,7 +86,7 @@ export const Timetable = ({ user, timetable }) => {
               <TimetableLessonType
                 className={isAnimated ? 'animated' : undefined}
               >
-                {marathonId === '81950' ? 'Logistics' : 'Preparation Course'}
+                {marathonId === '82851' ? 'Logistics' : 'Preparation Course'}
               </TimetableLessonType>
               <TimetableLessonLink href={link} target="_blank">
                 <TimetableLessonLinkText>Go to lesson</TimetableLessonLinkText>

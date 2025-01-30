@@ -17,10 +17,10 @@ import {
 import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { MyPlatform } from './My Platform/MyPlatform';
-import { MyEWSPAPanel } from './MyEWSPAPanel/MyEWSPAPanel';
-import { LoginErrorNote } from './MyEWSPAPanel/MyEWSPAPanel.styled';
+import { MyMeritoPanel } from './MyMeritoPanel/MyMeritoPanel';
+import { LoginErrorNote } from './MyMeritoPanel/MyMeritoPanel.styled';
 
-const MyEWSPA = () => {
+const MyMerito = () => {
   const [isUserLogged, setIsUserLogged] = useState(false);
   const [timetable, setTimetable] = useState({});
   const [user, setUser] = useState({});
@@ -32,7 +32,7 @@ const MyEWSPA = () => {
   axios.defaults.baseURL = 'https://ap-server-8qi1.onrender.com';
 
   useEffect(() => {
-    document.title = 'My EWSPA | EWSPA';
+    document.title = 'My Merito | Merito';
 
     const refreshToken = async () => {
       console.log('token refresher');
@@ -118,7 +118,7 @@ const MyEWSPA = () => {
           validationSchema={loginSchema}
         >
           <LoginForm>
-            <LoginLogo src={logo} alt="EWSPA logo" />
+            <LoginLogo src={logo} alt="Merito logo" />
             <LoginFormText>
               <StreamAuthTextHello>Hello!</StreamAuthTextHello>
               Our website is not available without authorization. Please enter
@@ -154,7 +154,11 @@ const MyEWSPA = () => {
         </Formik>
       ) : (
         <>
-          <MyEWSPAPanel user={user} link={platformLink} timetable={timetable} />
+          <MyMeritoPanel
+            user={user}
+            link={platformLink}
+            timetable={timetable}
+          />
           <MyPlatform platformLink={platformLink} />
         </>
       )}
@@ -162,4 +166,4 @@ const MyEWSPA = () => {
   );
 };
 
-export default MyEWSPA;
+export default MyMerito;

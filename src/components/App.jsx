@@ -12,8 +12,8 @@ const Stream = lazy(() =>
   import(/* webpackChunkName: "Stream page" */ '../pages/Streams/Stream/Stream')
 );
 
-const MyEWSPA = lazy(() =>
-  import(/* webpackChunkName: "My EWSPA Page" */ '../pages/MyEWSPA/MyEWSPA')
+const MyMerito = lazy(() =>
+  import(/* webpackChunkName: "My Merito Page" */ '../pages/MyMerito/MyMerito')
 );
 
 const NotFound = lazy(() =>
@@ -30,7 +30,7 @@ export const App = () => {
       />
       <Suspense fallback={Loader} noindex={true}>
         <Routes noindex={true}>
-          <Route path="/" element={<MyEWSPA />} noindex={true}>
+          <Route path="/" element={<MyMerito />} noindex={true}>
             <Route path="*" element={<NotFound />} noindex={true} />
           </Route>
           <Route path="lesson" element={<Streams />} noindex={true}>

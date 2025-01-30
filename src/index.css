@@ -2,15 +2,15 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
 
 :root {
-  --main-color: #0c4271;
+  --main-color: #406df7;
   --secondary-color: #ffffff;
   --secondary-burnt-color: #fffffff0;
-  --main-transparent-color: #0c427150;
-  --main-semi-transparent-color: #0c427185;
+  --main-transparent-color: #406df750;
+  --main-semi-transparent-color: #406df785;
   --secondary-transparent-color: #ffffff1c;
-  --accent-color: #1e73be;
-  --accent-semi-transparent-color: #1e73be80;
-  --accent-transparent-color: #1e73be70;
+  --accent-color: ##bce4fa;
+  --accent-semi-transparent-color: ##bce4fa80;
+  --accent-transparent-color: ##bce4fa70;
 
   --new-font-family: 'Fixel Display', sans-serif;
   --secondary-font-family: 'Fixel Variable', sans-serif;
