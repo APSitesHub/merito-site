@@ -1,8 +1,8 @@
 {
   "name": "merito",
-  "version": "1.0.1.2",
+  "version": "1.0.1.3",
   "private": true,
-  "homepage": "https://apsiteshub.github.io/merito-site/",
+  "homepage": "https://merito.ap.education/",
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
