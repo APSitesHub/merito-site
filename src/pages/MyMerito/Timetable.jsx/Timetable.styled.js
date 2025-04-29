@@ -41,6 +41,8 @@ export const TimetableBox = styled.div`
 `;
 
 export const TimetableHeading = styled.h3`
+  position: relative;
+
   padding: 9px 0;
 
   color: #525266;
@@ -55,6 +57,46 @@ export const TimetableHeading = styled.h3`
 `;
 
 export const TimetableIcon = styled(TimetableBtnIcon)``;
+
+export const TimeTableList = styled.ul`
+  position: absolute;
+  top: 47px;
+  right: 5px;
+  z-index: 5;
+  background-color: #fff;
+  border: 1px solid #0000000d;
+  box-shadow: 0px 0px 10px #0000000d;
+
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 5px;
+  scale: 0;
+  opacity: 0;
+
+  transition: all var(--animation-global);
+  transform-origin: top right;
+
+  &.open {
+    scale: 1;
+    opacity: 1;
+  }
+`;
+
+export const TimeTableListItem = styled.li`
+  font-size: 14px;
+`;
+
+export const TimeTableListItemLink = styled.a`
+  display: block;
+  padding: 8px;
+  transition: color var(--animation-global);
+
+  &:hover {
+    color: var(--main-color);
+    cursor: pointer;
+  }
+`;
 
 export const TimetableBody = styled.div`
   display: flex;

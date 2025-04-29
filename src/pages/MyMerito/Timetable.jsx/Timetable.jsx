@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import eyesImg from '../../../img/quiz/eyes.png';
 import { CalendarIcon } from '../Attendance/Attendance.styled';
 import {
@@ -18,6 +18,9 @@ import {
   TimetableLessonLink,
   TimetableLessonLinkText,
   TimetableLessonType,
+  TimeTableList,
+  TimeTableListItem,
+  TimeTableListItemLink,
   TimetableTable,
   TimetableWebinars,
   TimetableWebinarsHead,
@@ -26,23 +29,32 @@ import {
 export const Timetable = ({ user, timetable }) => {
   const [isAnimated, setIsAnimated] = useState(false);
   const [marathonId, setMarathonId] = useState('82851');
+  const [isTimetableListOpen, setIsTimetableListOpen] = useState(false);
   const [personalTimetable, setPersonalTimetable] = useState(
-    timetable.find(timeline => marathonId === timeline.marathon)
+    timetable.find(timeline => '82851' === timeline.marathon)
   );
+  const timeoutRef = useRef(null); // useRef to store the timeout ID to prevent timeout stacking
 
-  const changeTimetable = () => {
+  const toggleTimeTableList = () => {
+    setIsTimetableListOpen(isTimetableListOpen => !isTimetableListOpen);
+  };
+
+  const changeTimetable = id => {
     setIsAnimated(true);
-    setMarathonId(marathonId => (marathonId === '82851' ? '82850' : '82851'));
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setMarathonId(id);
     setPersonalTimetable(
       personalTimetable =>
-        (personalTimetable = timetable.find(timeline =>
-          marathonId === '82851'
-            ? '82850' === timeline.marathon
-            : '82851' === timeline.marathon
+        (personalTimetable = timetable.find(
+          timeline => id === timeline.marathon
         ))
     );
-    setTimeout(() => {
+    setIsTimetableListOpen(false);
+    timeoutRef.current = setTimeout(() => {
       setIsAnimated(false);
+      timeoutRef.current = null; // Clear the timeout reference after it executes
     }, 3000);
   };
 
@@ -51,7 +63,9 @@ export const Timetable = ({ user, timetable }) => {
 
     return marathonId === '82851'
       ? baseStreamUrl + 'logistics'
-      : baseStreamUrl + 'prep';
+      : marathonId === '82850'
+      ? baseStreamUrl + 'prep'
+      : baseStreamUrl + 'automation';
   };
 
   const link = getLink();
@@ -63,11 +77,28 @@ export const Timetable = ({ user, timetable }) => {
       <TimetableHeading>
         <CalendarIcon />
         Class schedule
-        <TimetableChangeCourseBtn onClick={changeTimetable}>
+        <TimetableChangeCourseBtn onClick={toggleTimeTableList}>
           <TimetableChangeCourseBtnText>
             Change course
           </TimetableChangeCourseBtnText>
         </TimetableChangeCourseBtn>
+        <TimeTableList className={isTimetableListOpen && 'open'}>
+          <TimeTableListItem>
+            <TimeTableListItemLink onClick={() => changeTimetable('82851')}>
+              Logistics
+            </TimeTableListItemLink>
+          </TimeTableListItem>
+          <TimeTableListItem>
+            <TimeTableListItemLink onClick={() => changeTimetable('82850')}>
+              Preparation Course
+            </TimeTableListItemLink>
+          </TimeTableListItem>
+          <TimeTableListItem>
+            <TimeTableListItemLink onClick={() => changeTimetable('91576')}>
+              Industrial Automation
+            </TimeTableListItemLink>
+          </TimeTableListItem>
+        </TimeTableList>
       </TimetableHeading>
       {!personalTimetable ? (
         <PointsPlaceHolder>
@@ -83,10 +114,12 @@ export const Timetable = ({ user, timetable }) => {
         <TimetableBody>
           <TimetableWebinars>
             <TimetableWebinarsHead>
-              <TimetableLessonType
-                className={isAnimated ? 'animated' : undefined}
-              >
-                {marathonId === '82851' ? 'Logistics' : 'Preparation Course'}
+              <TimetableLessonType className={isAnimated && 'animated'}>
+                {marathonId === '82851'
+                  ? 'Logistics'
+                  : marathonId === '82850'
+                  ? 'Preparation Course'
+                  : 'Industrial Automation'}
               </TimetableLessonType>
               <TimetableLessonLink href={link} target="_blank">
                 <TimetableLessonLinkText>Go to lesson</TimetableLessonLinkText>

@@ -30,9 +30,8 @@ export const App = () => {
       />
       <Suspense fallback={Loader} noindex={true}>
         <Routes noindex={true}>
-          <Route path="/" element={<MyMerito />} noindex={true}>
-            <Route path="*" element={<NotFound />} noindex={true} />
-          </Route>
+          <Route path="/" element={<MyMerito />} noindex={true}></Route>
+          <Route path="*" element={<NotFound />} noindex={true} />
           <Route path="lesson" element={<Streams />} noindex={true}>
             <Route path="logistics" element={<Stream />} noindex={true} />
             <Route
@@ -42,6 +41,12 @@ export const App = () => {
             />
             <Route path="prep" element={<Stream />} noindex={true} />
             <Route path="prep-chat" element={<WindowedChat />} noindex={true} />
+            <Route path="automation" element={<Stream />} noindex={true} />
+            <Route
+              path="automation-chat"
+              element={<WindowedChat />}
+              noindex={true}
+            />
           </Route>
         </Routes>
       </Suspense>
