@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CupBtnIcon } from '../MyMeritoPanel/MyMeritoPanel.styled';
 
 export const PointsBox = styled.div`
   position: absolute;
@@ -219,3 +220,5 @@ export const EyesEmoji = styled.img`
   pointer-events: none;
   margin-bottom: 20px;
 `;
+
+export const CupIcon = styled(CupBtnIcon)``;
