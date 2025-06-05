@@ -102,16 +102,16 @@ export const APPanelBtn = styled.button`
   }
 
   & > #search-btn ::before {
-    content: 'Пошук';
+    content: 'Szukaj';
   }
   &::before > #rating-btn {
-    content: 'Рейтинг';
+    content: 'Ranking';
   }
   &::before > #calendar-btn {
-    content: 'Відвідуваність';
+    content: 'Frekwencja';
   }
   &::before > #timetable-btn {
-    content: 'Розклад';
+    content: 'Plan lekcji';
   }
 
   &.tooltip-open::before > #search-btn {
@@ -143,7 +143,7 @@ export const APPanelResetBtn = styled(APPanelBtn)`
   }
 
   &::before {
-    content: 'Якщо урок на платформі не відкривається, натисніть на цю кнопку';
+    content: 'Jeśli lekcja na platformie się nie otwiera, kliknij ten przycisk';
     pointer-events: none;
 
     position: absolute;
@@ -183,7 +183,7 @@ export const APPanelResetBtn = styled(APPanelBtn)`
 
 export const APPanelToggleBtn = styled(APPanelResetBtn)`
   &::before {
-    content: 'Щоб переключитися на іншу мову на платформі, натисніть цю кнопку';
+    content: 'Aby przełączyć język na platformie, kliknij ten przycisk';
 
     top: 75%;
   }

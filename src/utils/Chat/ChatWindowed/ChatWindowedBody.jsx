@@ -102,7 +102,7 @@ export const ChatWindowedBody = ({ messages, socket, room }) => {
             message.userID === localStorage.getItem('userID') ? (
               <ChatMessageWrapper key={message.id}>
                 <ChatMessageYou className="sender__name">
-                  Ви ({message.username})
+                  Ty ({message.username})
                 </ChatMessageYou>
                 <ChatWindowedMessageYouCloud>
                   <ChatWindowedDeleteYourMessage

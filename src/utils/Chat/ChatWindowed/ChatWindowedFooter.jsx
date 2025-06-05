@@ -40,7 +40,7 @@ export const ChatWindowedFooter = ({ socket, room }) => {
       <ChatMessageForm className="form" onSubmit={handleSendMessage}>
         <ChatWindowedMessageInput
           type="text"
-          placeholder="Введіть повідомлення"
+          placeholder="Wpisz wiadomość"
           value={message}
           onChange={e => setMessage(e.target.value)}
         />
